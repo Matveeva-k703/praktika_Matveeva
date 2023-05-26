@@ -109,13 +109,6 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Types">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="Worker">
           <Key>
             <PropertyRef Name="tabNum" />
@@ -167,18 +160,6 @@
           <End Role="Device" Type="Self.Device" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Device">
-              <PropertyRef Name="type" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Device_Types">
-          <End Role="Types" Type="Self.Types" Multiplicity="1" />
-          <End Role="Device" Type="Self.Device" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Types">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Device">
@@ -307,7 +288,6 @@
           <EntitySet Name="SpecificationsOfPart" EntityType="Self.SpecificationsOfPart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Author__position__49C3F6B7" Association="Self.FK__Author__position__49C3F6B7">
             <End Role="Worker" EntitySet="Worker" />
@@ -323,10 +303,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Device_Type" Association="Self.FK_Device_Type">
             <End Role="Type" EntitySet="Type" />
-            <End Role="Device" EntitySet="Device" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Device_Types" Association="Self.FK_Device_Types">
-            <End Role="Types" EntitySet="Types" />
             <End Role="Device" EntitySet="Device" />
           </AssociationSet>
           <AssociationSet Name="FK_Device_Worker" Association="Self.FK_Device_Worker">
@@ -406,7 +382,6 @@
           <Property Name="client" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Client1" Relationship="Self.FK_Device_Client" FromRole="Device" ToRole="Client" />
           <NavigationProperty Name="Type1" Relationship="Self.FK_Device_Type" FromRole="Device" ToRole="Type" />
-          <NavigationProperty Name="Types" Relationship="Self.FK_Device_Types" FromRole="Device" ToRole="Types" />
           <NavigationProperty Name="Worker" Relationship="Self.FK_Device_Worker" FromRole="Device" ToRole="Worker" />
           <NavigationProperty Name="FirstDiagnostic" Relationship="Self.FK_FirstDiagnostic_Device" FromRole="Device" ToRole="FirstDiagnostic" />
           <NavigationProperty Name="Repair" Relationship="Self.FK_Repair_Device" FromRole="Device" ToRole="Repair" />
@@ -499,14 +474,6 @@
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Device" Relationship="Self.FK_Device_Type" FromRole="Type" ToRole="Device" />
         </EntityType>
-        <EntityType Name="Types">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Device" Relationship="Self.FK_Device_Types" FromRole="Types" ToRole="Device" />
-        </EntityType>
         <EntityType Name="Worker">
           <Key>
             <PropertyRef Name="tabNum" />
@@ -561,18 +528,6 @@
           <End Role="Device" Type="Self.Device" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Device">
-              <PropertyRef Name="type" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Device_Types">
-          <End Role="Types" Type="Self.Types" Multiplicity="1" />
-          <End Role="Device" Type="Self.Device" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Types">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Device">
@@ -701,7 +656,6 @@
           <EntitySet Name="SpecificationsOfPart" EntityType="Self.SpecificationsOfPart" />
           <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="Type" EntityType="Self.Type" />
-          <EntitySet Name="Types" EntityType="Self.Types" />
           <EntitySet Name="Worker" EntityType="Self.Worker" />
           <AssociationSet Name="FK__Author__position__49C3F6B7" Association="Self.FK__Author__position__49C3F6B7">
             <End Role="Worker" EntitySet="Worker" />
@@ -717,10 +671,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Device_Type" Association="Self.FK_Device_Type">
             <End Role="Type" EntitySet="Type" />
-            <End Role="Device" EntitySet="Device" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Device_Types" Association="Self.FK_Device_Types">
-            <End Role="Types" EntitySet="Types" />
             <End Role="Device" EntitySet="Device" />
           </AssociationSet>
           <AssociationSet Name="FK_Device_Worker" Association="Self.FK_Device_Worker">
@@ -877,14 +827,6 @@
               <MappingFragment StoreEntitySet="Type">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Types">
-            <EntityTypeMapping TypeName="MatveevaModel.Types">
-              <MappingFragment StoreEntitySet="Types">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="title" ColumnName="title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

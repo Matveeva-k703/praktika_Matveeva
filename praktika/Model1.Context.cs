@@ -37,7 +37,6 @@ namespace praktika
         public virtual DbSet<SpecificationsOfPart> SpecificationsOfPart { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Type> Type { get; set; }
-        public virtual DbSet<Types> Types { get; set; }
         public virtual DbSet<Worker> Worker { get; set; }
     }
 }
