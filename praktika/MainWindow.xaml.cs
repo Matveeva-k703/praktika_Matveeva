@@ -20,11 +20,11 @@ namespace praktika
     /// </summary>
     public partial class MainWindow : Window
     {
-        MatveevaEntities context;
+        Model1 context;
         public MainWindow()
         {
             InitializeComponent();
-            context = new MatveevaEntities();
+            context = new Model1();
             myFrame.Navigate(new pages.Authorisation(context));
         }
     }

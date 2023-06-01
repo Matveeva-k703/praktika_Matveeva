@@ -22,34 +22,27 @@ namespace praktika.pages
     /// </summary>
     public partial class Authorisation : Page
     {
-        MatveevaEntities context;
-        DispatcherTimer timer;
-        public Authorisation(MatveevaEntities cont)
+        Model1 context;
+        public Authorisation(Model1 cont)
         {
             InitializeComponent();
             context = cont;
-            timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 30);
-            timer.Tick += Timer_Tick;
+            Remind.Visibility = Visibility.Hidden;
         }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            buttonEnter.IsEnabled = true;
-            timer.Stop();
-        }
-
+        
         int countClick = 0;
         private void EnterClick(object sender, RoutedEventArgs e)
         {
+            
             countClick++;
             string log = loginBox.Text;
             string pass = passwordBox.Password;
-            Author author = context.Author.Find(log);
+            Author author = context.Author.ToList().Find(x=> x.login.Equals(log));
+            
             if (author != null) 
             {
                 
-                if(author.Password.Equals(pass))
+                if(author.password.Equals(pass))
                 { 
                     MessageBox.Show("Вы успешно авторизованы ");
                     countClick = 0;
@@ -57,20 +50,20 @@ namespace praktika.pages
                 else {
                     MessageBox.Show("Вы ввели неверный пароль ");
                     if (countClick >= 3) {
-                        buttonEnter.IsEnabled = false;
-                        timer.Start();
+                        Remind.Visibility= Visibility.Visible;
                     }
                 }
             }
             else
             {
                 MessageBox.Show("Такого пользователя не существует ");
-                if (countClick >= 3)
-                {
-                    buttonEnter.IsEnabled = false;
-                    timer.Start();
-                }
             }
+        }
+
+        private void Remind_Click(object sender, RoutedEventArgs e)
+        {
+            PasRemind pasRemindWindow = new PasRemind(context);
+            pasRemindWindow.Show();
         }
     }
 }

@@ -8,6 +8,5 @@
         Title="MainWindow" Height="600" Width="800">
     <Grid>
         <Frame Name="myFrame"/>
-
     </Grid>
 </Window>

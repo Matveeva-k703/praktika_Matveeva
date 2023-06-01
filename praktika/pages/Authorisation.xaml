@@ -22,7 +22,8 @@
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
-        <Image Grid.Column="1" Grid.Row="0" Margin="10" Width="150" Source="/images/Logo.png"/>
+        <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White">Фирма ремонта техники QWERTY</TextBlock>
+        <Image Grid.Column="0" Grid.Row="0" Margin="10" Width="150" Source="/images/Logo.png"/>
         <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" FontSize="30" Foreground="White">Авторизация</TextBlock>
         <StackPanel Grid.Column="1" Grid.Row="2">
             <TextBlock>Логин</TextBlock>
@@ -32,7 +33,8 @@
             <TextBlock>Пароль</TextBlock>
             <PasswordBox Name="passwordBox"/>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row="4" Click="EnterClick" Name="buttonEnter">Войти</Button>
-        <Button Grid.Column="2" Grid.Row="5">Зарегистрироваться</Button>
+        <Button Grid.Column="1" Grid.Row="4" Click="EnterClick" Name="buttonEnter" Width="80" Height="30">Войти</Button>
+        <Button Grid.Column="2" Grid.Row="5" Click="Remind_Click" Name="Remind">Напомнить пароль</Button>
+        <Frame Name="PasFrame"/>
     </Grid>
 </Page>
