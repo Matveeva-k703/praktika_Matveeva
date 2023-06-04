@@ -43,8 +43,9 @@ namespace praktika.pages
             {
                 
                 if(author.password.Equals(pass))
-                { 
-                    MessageBox.Show("Вы успешно авторизованы ");
+                {
+                    context.SaveChanges();
+                    NavigationService.Navigate(new MainPage(context));
                     countClick = 0;
                 }
                 else {

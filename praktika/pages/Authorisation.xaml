@@ -24,6 +24,17 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White">Фирма ремонта техники QWERTY</TextBlock>
         <Image Grid.Column="0" Grid.Row="0" Margin="10" Width="150" Source="/images/Logo.png"/>
+        <Line Grid.Row="1" Grid.Column="1" Stroke="White" StrokeThickness="10" X1="270"/>
+        <Line Grid.Column="1" Grid.Row="1" Y1="100" Stroke="White" StrokeThickness="10"/>
+        <Line Grid.Column="1" Grid.Row="2" Y1="100" Stroke="White" StrokeThickness="10"/>
+        <Line Grid.Column="1" Grid.Row="3" Y1="100" Stroke="White" StrokeThickness="10"/>
+        <Line Grid.Column="1" Grid.Row="4" Y1="100" Stroke="White" StrokeThickness="10"/>
+        <Line Grid.Row="5" Grid.Column="1" Stroke="White" StrokeThickness="10" X1="270"/>
+        <Line Grid.Column="2" Grid.Row="4" Y1="100" Stroke="White" StrokeThickness="10"/>
+        <Line Grid.Column="2" Grid.Row="3" Y1="100" Stroke="White" StrokeThickness="10"/>
+        <Line Grid.Column="2" Grid.Row="2" Y1="100" Stroke="White" StrokeThickness="10"/>
+        <Line Grid.Column="2" Grid.Row="1" Y1="100" Stroke="White" StrokeThickness="10"/>
+        <Line Grid.Column="2" Grid.Row="5" Y1="5" Stroke="White" StrokeThickness="10"/>
         <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" FontSize="30" Foreground="White">Авторизация</TextBlock>
         <StackPanel Grid.Column="1" Grid.Row="2">
             <TextBlock>Логин</TextBlock>
