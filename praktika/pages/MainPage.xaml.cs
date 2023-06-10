@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +21,23 @@ namespace praktika.pages
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage(Model1 cont)
+        Window Window;
+        Model1 _context;
+        public MainPage(Model1 cont, Window window)
         {
             InitializeComponent();
+            Window = window;
+            _context = cont;
+        }
+
+        private void Show_Master(object sender, RoutedEventArgs e)
+        {
+            frameToBasePages.Navigate(new MasterPage(_context));
+        }
+
+        private void ExitClick(object sender, RoutedEventArgs e)
+        {
+            Window.Close();
         }
     }
 }

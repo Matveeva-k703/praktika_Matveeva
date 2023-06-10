@@ -25,7 +25,7 @@ namespace praktika
         {
             InitializeComponent();
             context = new Model1();
-            myFrame.Navigate(new pages.Authorisation(context));
+            myFrame.Navigate(new pages.Authorisation(context,this));
         }
     }
 }

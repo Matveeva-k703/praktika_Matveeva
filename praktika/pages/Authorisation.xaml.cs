@@ -23,11 +23,13 @@ namespace praktika.pages
     public partial class Authorisation : Page
     {
         Model1 context;
-        public Authorisation(Model1 cont)
+        Window window;
+        public Authorisation(Model1 cont, Window w)
         {
             InitializeComponent();
             context = cont;
             Remind.Visibility = Visibility.Hidden;
+            window = w;
         }
         
         int countClick = 0;
@@ -45,7 +47,7 @@ namespace praktika.pages
                 if(author.password.Equals(pass))
                 {
                     context.SaveChanges();
-                    NavigationService.Navigate(new MainPage(context));
+                    NavigationService.Navigate(new MainPage(context,window));
                     countClick = 0;
                 }
                 else {
