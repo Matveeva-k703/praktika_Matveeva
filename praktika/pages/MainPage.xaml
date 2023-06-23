@@ -27,7 +27,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Image Source="/images/Logo.png" Grid.RowSpan="2"/>
-            <Button Grid.Row="2">Заказы</Button>
+            <Button Grid.Row="2" Click="Show_Devices">Заказы</Button>
             <Button Grid.Row="3">Клиенты</Button>
             <Button Grid.Row="4" Click="Show_Master">Мастера</Button>
             <Button Grid.Row="9" Click="ExitClick">Выход</Button>

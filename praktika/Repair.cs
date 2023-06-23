@@ -1,5 +1,6 @@
 namespace praktika
 {
+    using praktika.Entityes;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -26,6 +27,7 @@ namespace praktika
         public int status { get; set; }
 
         public decimal? cost { get; set; }
+        public byte[] photo { get; set; }
 
         public virtual Device Device1 { get; set; }
 
@@ -33,5 +35,6 @@ namespace praktika
         public virtual ICollection<PartsToRepair> PartsToRepair { get; set; }
 
         public virtual Status Status1 { get; set; }
+        public string DeviceTitle { get => Device1.model; }
     }
 }

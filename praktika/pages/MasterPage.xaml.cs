@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -27,8 +28,27 @@ namespace praktika.pages
             context = _cont;
             masterData.ItemsSource = context.Worker.ToList();
             StatusMasterBox.ItemsSource = context.Worker.ToList();
+            var statusList = _cont.Status.ToList();
+            statusList.Insert(0, new Status() { Title = "Все" });
+            StatusMasterBox.ItemsSource = statusList;
+            StatusMasterBox.SelectedIndex = 0;
         }
+        void FilterData()
+        {
+            var list = context.Worker.ToList();
+            if (StatusMasterBox.SelectedIndex != 0)
+            {
+                Status status = StatusMasterBox.SelectedItem as Status;
+                list = list.Where(x => x.status == status.Title).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(EnterFIO.Text))
+            {
+                list = list.Where(x => x.FIO.Contains(EnterFIO.Text)).ToList();
+            }
 
+            masterData.ItemsSource = list;
+
+        }
         private void AddMasterClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddMasterPage(context));
@@ -57,6 +77,16 @@ namespace praktika.pages
                     MessageBox.Show("Ошибка!");
                 }
             }
+        }
+
+        private void SearchChanged(object sender, RoutedEventArgs e)
+        {
+            FilterData();
+        }
+
+        private void StatusChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FilterData();
         }
     }
 }

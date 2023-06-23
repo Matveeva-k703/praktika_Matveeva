@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +25,20 @@ namespace praktika
         public MainWindow()
         {
             InitializeComponent();
+            //DownloadPictures();
             context = new Model1();
-            myFrame.Navigate(new pages.Authorisation(context,this));
+            myFrame.Navigate(new pages.Authorisation(context, this));
         }
+        //public void DownloadPictures()
+        //{
+        //    using (Model1 context = new Model1())
+        //    {
+        //        foreach (var item in context.Repair.ToList())
+        //        {
+        //            item.photo = File.ReadAllBytes($"C:/Devices/{item.id}.jpg");
+        //        }
+        //        context.SaveChanges();
+        //    }
+        //}
     }
 }

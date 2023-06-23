@@ -39,5 +39,10 @@ namespace praktika.pages
         {
             Window.Close();
         }
+
+        private void Show_Devices(object sender, RoutedEventArgs e)
+        {
+            frameToBasePages.Navigate(new RepairPage(_context));
+        }
     }
 }
